@@ -4,23 +4,16 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    std::vector<const char*> new_argv(argv, argv + argc);
-    new_argv.push_back("--dummy1");
-    new_argv.push_back("--dummy2");
-    new_argv.push_back(nullptr);
-    argv = const_cast<char**>(new_argv.data());
-    argc += 2;
-
-    bool dummy1Found = false;
-    bool dummy2Found = false;
-    for (int i = 0; i < argc; ++i)
+    char* buildDir = std::getenv("BUILDDIR");
+    char* srcDir = std::getenv("SRCDIR");
+    cout << "Num Args: " << argc - 1 << endl;
+    for (int i = 1; i < argc; ++i)
     {
-        if (strcmp(argv[i], "--dummy1") == 0) dummy1Found = true;
-        if (strcmp(argv[i], "--dummy2") == 0) dummy2Found = true;
+        cout << i << ": " << argv[i] << endl;
     }
-    if (not dummy1Found || not dummy2Found)
+    if (buildDir == nullptr || srcDir == nullptr)
     {
-        cerr << "Error: Need --dummy1 and --dummy2 to run, exiting!" << endl;
+        cerr << "Error: Need environment parameter BUILDIR and SRCDIR to run, exiting!" << endl;
         exit(1);
     }
     else

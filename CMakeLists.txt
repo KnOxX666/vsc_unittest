@@ -14,15 +14,15 @@ include(CodeCoverage)
 append_coverage_compiler_flags()
 
 file (GLOB SRC_FILES CONFIGURE_DEPENDS *.h *.cpp)
-enable_testing() # enable ctest
+#enable_testing() # enable ctest
 
 add_executable (vsc_unittest ${SRC_FILES})
 
 target_link_libraries(vsc_unittest PRIVATE 
                       gtest gmock)
 
-include(GoogleTest)
-gtest_discover_tests(vsc_unittest) # converts google-test-cases into ctest based test-cases.
+#include(GoogleTest)
+#gtest_discover_tests(vsc_unittest) # converts google-test-cases into ctest based test-cases.
 
 #if (CMAKE_BUILD_TYPE STREQUAL "Coverage")
     #SET(CMAKE_CXX_FLAGS "-g -O0 --coverage -fprofile-arcs")
