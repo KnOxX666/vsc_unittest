@@ -8,6 +8,11 @@ project(
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
+
+include(CodeCoverage)
+append_coverage_compiler_flags()
+
 file (GLOB SRC_FILES CONFIGURE_DEPENDS *.h *.cpp)
 enable_testing() # enable ctest
 
@@ -20,8 +25,8 @@ include(GoogleTest)
 gtest_discover_tests(vsc_unittest) # converts google-test-cases into ctest based test-cases.
 
 #if (CMAKE_BUILD_TYPE STREQUAL "Coverage")
-    SET(CMAKE_CXX_FLAGS "-g -O0 --coverage -fprofile-arcs")
-    SET(CMAKE_C_FLAGS "-g -O0 --coverage -fprofile-arcs")
+    #SET(CMAKE_CXX_FLAGS "-g -O0 --coverage -fprofile-arcs")
+    #SET(CMAKE_C_FLAGS "-g -O0 --coverage -fprofile-arcs")
     
     # Create the gcov-clean target. This cleans the build as well as generated 
     # .gcda and .gcno files.

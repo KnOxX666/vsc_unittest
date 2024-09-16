@@ -2,6 +2,7 @@
     "recommendations": [
         "ms-vscode.cpptools",
         "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cmake-tools",
         "matepek.vscode-catch2-test-adapter",
         "JacquesLucke.gcov-viewer",
         "sr-team.gcov-viewer-cmake"
